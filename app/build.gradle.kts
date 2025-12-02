@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.dagger.hilt)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -50,6 +52,18 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+
+    implementation(libs.dagger.android)
+    ksp(libs.dagger.compiler)
+    implementation(libs.retrofit){
+        exclude(module = "okhttp")
+    }
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.okHttp)
+    implementation(libs.okHttp.logging)
+    implementation(libs.okHttp.url.connection)
+    implementation(libs.gson)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
