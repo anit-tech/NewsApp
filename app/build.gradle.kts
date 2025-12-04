@@ -63,6 +63,7 @@ dependencies {
     implementation(libs.okHttp.logging)
     implementation(libs.okHttp.url.connection)
     implementation(libs.gson)
+    implementation(libs.hilt.compose)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
