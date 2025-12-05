@@ -64,6 +64,9 @@ dependencies {
     implementation(libs.okHttp.url.connection)
     implementation(libs.gson)
     implementation(libs.hilt.compose)
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network)
+    implementation(libs.navigation.compose)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
