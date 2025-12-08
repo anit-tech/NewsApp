@@ -2,6 +2,7 @@ package com.anit.newsapp.presentation.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -30,12 +31,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import coil3.compose.AsyncImage
 import com.anit.newsapp.data.model.News
 import com.anit.newsapp.presentation.State
 
 @Composable
-fun HomeScreen(modifier: Modifier) {
+fun HomeScreen(navController: NavHostController) {
     val viewModel: HomeViewModel = hiltViewModel()
     val uiState = viewModel.state.collectAsState()
     val searchText = remember {
@@ -94,7 +96,9 @@ fun HomeScreen(modifier: Modifier) {
                         Text(text = "News")
                     }
                     items(data.news) { article ->
-                        NewsItem(article)
+                        NewsItem(article, onClick = {
+                            navController.navigate("/details" )
+                        })
                     }
                 }
             }
@@ -103,7 +107,7 @@ fun HomeScreen(modifier: Modifier) {
 }
 
 @Composable
-fun NewsItem(news: News) {
+fun NewsItem(news: News,onClick:() -> Unit) {
     Box(
         modifier = Modifier
             .padding(8.dp)
@@ -111,6 +115,7 @@ fun NewsItem(news: News) {
             .height(130.dp)
             .clip(RoundedCornerShape(16.dp))
             .background(Color.Red.copy(alpha = 0.2f))
+            .clickable { onClick() }
     ) {
         AsyncImage(
             model = news.image,

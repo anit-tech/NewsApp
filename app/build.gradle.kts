@@ -67,6 +67,8 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.coil.network)
     implementation(libs.navigation.compose)
+    implementation(libs.constraint.compose)
+    implementation(libs.material.icon.extended)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
